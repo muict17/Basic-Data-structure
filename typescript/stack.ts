@@ -8,7 +8,7 @@ class Stack<T> {
   }
 
   isFull() {
-    return this.size === this.currentIndex;
+    return this.size === this.currentIndex - 1;
   }
 
   push(value: T) {
@@ -24,6 +24,9 @@ class Stack<T> {
     this.currentIndex--;
     this.stack.splice(this.currentIndex, 1);
   }
+  peek() {
+    return this.stack[this.currentIndex - 1];
+  }
 }
 
 const testStack = new Stack<string>(4);
@@ -31,8 +34,9 @@ testStack.push("a");
 testStack.push("b");
 testStack.push("c");
 testStack.push("d");
-
+console.log(testStack.peek());
 testStack.pop();
+console.log(testStack.peek());
 // Uncomment to show Error
 // testStack.push("a");
 // testStack.push("a");
